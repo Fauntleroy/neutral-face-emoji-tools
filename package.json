@@ -1,0 +1,52 @@
+{
+  "name": "slack-emoji-utils",
+  "version": "1.0.0-alpha.0",
+  "description": "Utilities that make life as a Slack emoji addict a little easier.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "gulp dev",
+    "build": "gulp build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Fauntleroy/slack-emoji-utils.git"
+  },
+  "keywords": [
+    "slack",
+    "emoji",
+    "upload",
+    "extension",
+    "chrome"
+  ],
+  "author": "Timothy Kempf <tim@kemp59f.info> (http://kemp59f.info)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Fauntleroy/slack-emoji-utils/issues"
+  },
+  "homepage": "https://github.com/Fauntleroy/slack-emoji-utils#readme",
+  "devDependencies": {
+    "babelify": "^6.3.0",
+    "browserify": "^11.2.0",
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.6",
+    "lodash": "^3.10.1",
+    "mkdirp": "^0.5.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watch": "^0.16.0",
+    "watchify": "^3.4.0"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "react": "^0.14.0",
+    "react-dom": "^0.14.0",
+    "react-dropzone": "^2.1.0",
+    "superagent": "^1.4.0"
+  },
+  "browserify": {
+    "debug": true,
+    "transform": [
+      "babelify"
+    ]
+  }
+}

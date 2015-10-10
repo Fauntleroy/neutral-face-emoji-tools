@@ -1,0 +1,14 @@
+{
+    "name": "Slack Emoji Utils",
+    "description": "Utilities that make life as a Slack emoji addict a little easier.",
+    "version": "1.0.0.0",
+    "permissions": ["activeTab"],
+    "content_scripts": [{
+        "matches": ["*://*.slack.com/*"],
+        "js": [
+            "content.js"
+        ],
+        "run_at": "document_idle"
+    }],
+    "manifest_version": 2
+}
