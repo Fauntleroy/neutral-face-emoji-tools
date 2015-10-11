@@ -31,8 +31,8 @@ Follow these steps to get your dev workflow in order:
 - Clone this repository
 - Install the dev scripts with `npm install`
 - Run `npm run build` to build the distributable files
-- Go to chrome://extensions in Google Chrome
+- Go to [chrome://extensions](chrome://extensions) in Google Chrome
 - Click "Load unpacked extension..."
 - Select the `dist/` directory in your Slack Emoji Utils repo
 
-Once you've done all these things, the extension should appear in your extensions list. If you want to actively work on the extension, run `npm run dev`—this will watch the `src/` directory for changes and update the contents of `dist/` automatically. You will then need to go to the chrome://extensions/ page, manually reload the extension every time, and refresh the page.
+Once you've done all these things, the extension should appear in your extensions list. If you want to actively work on the extension, run `npm run dev`—this will watch the `src/` directory for changes and update the contents of `dist/` automatically. You will then need to go to the [chrome://extensions/](chrome://extensions) page, manually reload the extension, and refresh the page.
