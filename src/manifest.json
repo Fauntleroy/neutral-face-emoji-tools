@@ -4,7 +4,7 @@
     "version": "1.0.0.0",
     "permissions": ["activeTab"],
     "content_scripts": [{
-        "matches": ["*://*.slack.com/*"],
+        "matches": ["*://*.slack.com/customize/emoji"],
         "js": [
             "content.js"
         ],
