@@ -68,7 +68,7 @@ var Uploader = React.createClass({
         <p className="set__uploader__subheading">Drag and drop images into the area below. Any images dropped there will be automatically uploaded using their filename as the emoji name.</p>
         <p className="set__uploader__input-note input_note">Example: <span className="normal">"ditto.gif" will be added as "ditto"</span></p>
         <Dropzone className="set__uploader__dropzone" activeClassName="set__uploader__dropzone--active" onDrop={this.handleDrop}>
-          <div className="set__uploader__dropzone__content input_note">Drop images here</div>
+          <div className="set__uploader__dropzone__content input_note"><strong>Drop images here</strong> or click to open a file dialog</div>
         </Dropzone>
         <ul className="set__uploader__uploads">{this.renderUploads()}</ul>
       </div>

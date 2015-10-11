@@ -8,6 +8,7 @@
 @color-slack-border: #e8e8e8;
 
 .set__uploader__dropzone {
+  cursor: pointer;
   width: 100%;
   height: 150px;
   border: @color-dropzone-border 3px dashed;
@@ -16,7 +17,8 @@
   transition: background 450ms, border-color 450ms;
 }
 
-.set__uploader__dropzone--active {
+.set__uploader__dropzone--active,
+.set__uploader__dropzone:hover {
   background: @color-dropzone-active-bg;
   border-color: @color-dropzone-active-border;
 }
