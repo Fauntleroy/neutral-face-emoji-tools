@@ -1,0 +1,91 @@
+@color-dropzone-bg: rgb(250, 250, 250);
+@color-dropzone-active-bg: rgb(240, 240, 240);
+@color-dropzone-border: rgb(240, 240, 240);
+@color-dropzone-active-border: rgb(230, 230, 230);
+@color-slack-info: #3aa3e3;
+@color-slack-success: #2ab27b;
+@color-slack-error: #cb5234;
+@color-slack-border: #e8e8e8;
+
+.set__uploader__dropzone {
+  width: 100%;
+  height: 150px;
+  border: @color-dropzone-border 3px dashed;
+  border-radius: 5px;
+  background: @color-dropzone-bg;
+  transition: background 450ms, border-color 450ms;
+}
+
+.set__uploader__dropzone--active {
+  background: @color-dropzone-active-bg;
+  border-color: @color-dropzone-active-border;
+}
+
+.set__uploader__dropzone__content {
+  width: 100%;
+  height: 150px;
+  text-align: center;
+  line-height: 150px;
+}
+
+.set__uploader__uploads {
+  list-style: none;
+  margin: 0;
+}
+
+.set__uploader__upload {
+  padding: 8px 0;
+  border-bottom: 1px solid @color-slack-border;
+}
+
+.set__uploader__upload__preview {
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+}
+
+.set__uploader__upload__filename {
+  font-weight: bold;
+  margin-right: 1em;
+}
+
+.set__uploader__upload__status {
+  color: @color-slack-info;
+}
+
+.set__uploader__upload__status__icon {
+  display: none;
+  vertical-align: top;
+  margin-right: 0.25em;
+}
+
+.set__uploader__upload__status__icon-uploading {
+  display: inline-block;
+}
+
+.set__uploader__upload--success,
+.set__uploader__upload--error {
+  .set__uploader__upload__status__icon-uploading {
+    display: none;
+  }
+}
+
+.set__uploader__upload--success {
+  .set__uploader__upload__status {
+    color: @color-slack-success;
+  }
+
+  .set__uploader__upload__status__icon-success {
+    display: inline-block;
+  }
+}
+
+.set__uploader__upload--error {
+  .set__uploader__upload__status {
+    color: @color-slack-error;
+  }
+
+  .set__uploader__upload__status__icon-error {
+    display: inline-block;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import findIndex from 'lodash/array/findIndex';
 
 import { uploadEmoji } from '../services/upload.js';
@@ -36,9 +37,26 @@ var Uploader = React.createClass({
   },
   renderUploads: function () {
     return this.state.queue.map(upload => {
+      var status = upload.success ?
+        'Complete' :
+        upload.error ?
+          upload.error :
+          'Uploading...';
+      var upload_classes = cx({
+        set__uploader__upload: true,
+        'set__uploader__upload--success': upload.success,
+        'set__uploader__upload--error': !!upload.error
+      });
       return (
-        <li key={upload.id}>
-          <img src={upload.file.preview} /> {upload.file.name} - {upload.success && 'done'} - {upload.error}
+        <li className={upload_classes} key={upload.id}>
+          <img className="set__uploader__upload__preview" src={upload.file.preview} />
+          <span className="set__uploader__upload__filename">{upload.file.name}</span>
+          <span className="set__uploader__upload__status">
+            <i className="set__uploader__upload__status__icon set__uploader__upload__status__icon-uploading ts_icon ts_icon_spinner" />
+            <i className="set__uploader__upload__status__icon set__uploader__upload__status__icon-error ts_icon ts_icon_warning" />
+            <i className="set__uploader__upload__status__icon set__uploader__upload__status__icon-success ts_icon ts_icon_check_circle_o" />
+            {status}
+          </span>
         </li>
       );
     });
@@ -46,11 +64,13 @@ var Uploader = React.createClass({
   render: function () {
     return (
       <div className="slack-emoji-utils">
-        <img src="http://orig14.deviantart.net/da63/f/2009/242/1/7/ditto_scratch_sprite_by_starrmyt.png" />
-        <Dropzone onDrop={this.handleDrop}>
-          Drop an image in here!
+        <h4 className="set__uploader__heading">Bulk Emoji Uploader</h4>
+        <p className="set__uploader__subheading">Drag and drop images into the area below. Any images dropped there will be automatically uploaded using their filename as the emoji name.</p>
+        <p className="set__uploader__input-note input_note">Example: <span className="normal">"ditto.gif" will be added as "ditto"</span></p>
+        <Dropzone className="set__uploader__dropzone" activeClassName="set__uploader__dropzone--active" onDrop={this.handleDrop}>
+          <div className="set__uploader__dropzone__content input_note">Drop images here</div>
         </Dropzone>
-        <ul>{this.renderUploads()}</ul>
+        <ul className="set__uploader__uploads">{this.renderUploads()}</ul>
       </div>
     );
   }
