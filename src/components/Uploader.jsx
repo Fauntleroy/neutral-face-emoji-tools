@@ -38,7 +38,7 @@ var Uploader = React.createClass({
     return this.state.queue.map(upload => {
       return (
         <li key={upload.id}>
-          <img src={upload.file.preview} /> {upload.file.name} - {upload.success && 'done'}
+          <img src={upload.file.preview} /> {upload.file.name} - {upload.success && 'done'} - {upload.error}
         </li>
       );
     });
