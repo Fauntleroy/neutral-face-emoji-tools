@@ -10,5 +10,8 @@
         ],
         "run_at": "document_idle"
     }],
+    "icons": {
+      "128": "images/icon_128.png"
+    },
     "manifest_version": 2
 }

@@ -45,14 +45,16 @@ gulp.task( 'compile and watch content.js', function(){
 
 gulp.task( 'copy static files', function(){
 	gulp.src([
-		'./src/manifest.json'
+		'./src/manifest.json',
+		'./src/images/**/*'
 	], { base: './src' })
 		.pipe( gulp.dest('dist') );
 });
 
 gulp.task( 'watch static files', function(){
 	gulp.watch([
-		'./src/manifest.json'
+		'./src/manifest.json',
+		'./src/images/**/*'
 	], ['copy static files']);
 });
 
