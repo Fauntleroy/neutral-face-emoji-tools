@@ -31,7 +31,6 @@
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.6",
     "lessify": "^1.0.1",
-    "lodash": "^3.10.1",
     "mkdirp": "^0.5.1",
     "vinyl-source-stream": "^1.1.0",
     "watch": "^0.16.0",
