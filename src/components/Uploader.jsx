@@ -63,7 +63,7 @@ var Uploader = React.createClass({
   },
   render: function () {
     return (
-      <div className="slack-emoji-utils">
+      <div className="slack-emoji-tools">
         <h4 className="set__uploader__heading">Bulk Emoji Uploader</h4>
         <p className="set__uploader__subheading">Drag and drop images into the area below. Any images dropped there will be automatically uploaded using their filename as the emoji name.</p>
         <p className="set__uploader__input-note input_note">Example: <span className="normal">"ditto.gif" will be added as "ditto"</span></p>

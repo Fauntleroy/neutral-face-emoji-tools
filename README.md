@@ -1,4 +1,4 @@
-## Slack Emoji Utils
+## Slack Emoji Tools
 
 Drag and drop all your emoji.
 
@@ -33,6 +33,6 @@ Follow these steps to get your dev workflow in order:
 - Run `npm run build` to build the distributable files
 - Go to [chrome://extensions](chrome://extensions) in Google Chrome
 - Click "Load unpacked extension..." (*make sure "Developer Mode" is checked*)
-- Select the `dist/` directory in your Slack Emoji Utils repo
+- Select the `dist/` directory in your Slack Emoji Tools repo
 
 Once you've done all these things, the extension should appear in your extensions list. If you want to actively work on the extension, run `npm run dev`—this will watch the `src/` directory for changes and update the contents of `dist/` automatically. You will then need to go to the [chrome://extensions/](chrome://extensions) page, manually reload the extension, and refresh the page.

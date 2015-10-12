@@ -28,3 +28,6 @@ node_modules
 
 # Do not include compiled files
 dist
+
+# Do not include zip
+*.zip

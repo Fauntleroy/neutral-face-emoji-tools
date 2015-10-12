@@ -1,7 +1,7 @@
 {
-    "name": "Slack Emoji Utils",
-    "description": "Utilities that make life as a Slack emoji addict a little easier.",
-    "version": "1.0.0.0",
+    "name": "Slack Emoji Tools",
+    "description": "Tools that make life as a Slack emoji addict a little easier.",
+    "version": "1.0.0",
     "permissions": ["activeTab"],
     "content_scripts": [{
         "matches": ["*://*.slack.com/customize/emoji*"],

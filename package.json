@@ -1,7 +1,7 @@
 {
-  "name": "slack-emoji-utils",
-  "version": "1.0.0-alpha.0",
-  "description": "Utilities that make life as a Slack emoji addict a little easier.",
+  "name": "slack-emoji-tools",
+  "version": "1.0.0",
+  "description": "Tools that make life as a Slack emoji addict a little easier.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fauntleroy/slack-emoji-utils.git"
+    "url": "git+https://github.com/Fauntleroy/slack-emoji-tools.git"
   },
   "keywords": [
     "slack",
@@ -22,9 +22,9 @@
   "author": "Timothy Kempf <tim@kemp59f.info> (http://kemp59f.info)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Fauntleroy/slack-emoji-utils/issues"
+    "url": "https://github.com/Fauntleroy/slack-emoji-tools/issues"
   },
-  "homepage": "https://github.com/Fauntleroy/slack-emoji-utils#readme",
+  "homepage": "https://github.com/Fauntleroy/slack-emoji-tools#readme",
   "devDependencies": {
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
