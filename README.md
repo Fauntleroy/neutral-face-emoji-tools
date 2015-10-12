@@ -8,7 +8,7 @@ Drag and drop all your emoji.
 
 ### Installation
 
-When this is added to the Chrome Web Store, this section will be written.
+This extension is installed through the Chrome Web Store: https://chrome.google.com/webstore/detail/slack-emoji-tools/anchoacphlfbdomdlomnbbfhcmcdmjej
 
 -----
 
