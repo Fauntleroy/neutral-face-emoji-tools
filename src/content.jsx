@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 import CSSLoaded from './styles/content.less';
 
-import Uploader from './components/Uploader.jsx';
+import Uploader from './components/uploader.jsx';
 
 var add_emoji_form = document.querySelector('#addemoji');
 var container_div = document.createElement('div');
