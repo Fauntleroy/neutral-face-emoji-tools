@@ -37,7 +37,10 @@ var upload_service = {
       image_upload_request.field(name, value)
     });
     image_upload_request.end((error, response) => {
-      var response_error = upload_service._extractError(response.text);
+      const response_error = error
+        ? `HTTP ${error.status}`
+        : upload_service._extractError(response.text);
+
       callback(response_error, response);
     });
   }
