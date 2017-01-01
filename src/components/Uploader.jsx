@@ -1,10 +1,10 @@
 import React from 'react';
+import Dropzone from 'react-dropzone';
 import cx from 'classnames';
 import findIndex from 'lodash/array/findIndex';
+import uuid from 'uuid';
 
 import { uploadEmoji } from '../services/upload.js';
-
-import Dropzone from 'react-dropzone';
 
 var Uploader = React.createClass({
   getInitialState: function () {
@@ -13,9 +13,24 @@ var Uploader = React.createClass({
     };
   },
   handleDrop: function (files) {
-    files.forEach(file => {
-      var id = uploadEmoji(file, (error, response) => {
-        var queue = [...this.state.queue];
+    const queue = files.map(file => {
+      return {
+        id: uuid.v4(),
+        file,
+        success: null,
+        error: null
+      };
+    });
+    this.setState({ queue }, () => {
+      this.state.queue.forEach(file => {
+        uploadEmoji(file.file, this.uploadComplete(file.id));
+      });
+    });
+  },
+  uploadComplete: function (id) {
+    return (error, response) => {
+      this.setState((state) => {
+        var queue = [...state.queue];
         var index = findIndex(queue, upload => upload.id === id);
         var current_upload = queue[index];
         queue[index] = {
@@ -23,17 +38,9 @@ var Uploader = React.createClass({
           error,
           success: !error
         };
-        this.setState({ queue });
+        return { queue };
       });
-      setTimeout(() => {
-        this.setState({ queue: [...this.state.queue, {
-          id,
-          file,
-          success: null,
-          error: null
-        }]});
-      }, 0);
-    });
+    };
   },
   renderUploads: function () {
     return this.state.queue.map(upload => {

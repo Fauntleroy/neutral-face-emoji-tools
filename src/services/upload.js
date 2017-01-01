@@ -1,9 +1,10 @@
+import Bottleneck from 'bottleneck'
 import superagent from 'superagent';
 import each from 'lodash/collection/each';
 import strip from 'strip';
-import uuid from 'uuid';
 
 const NO_OP = function () {};
+const limiter = new Bottleneck(3, 75);
 
 var upload_service = {
   _getHiddenFormData: function () {
@@ -22,8 +23,10 @@ var upload_service = {
     return error_text;
   },
   uploadEmoji: function (file, callback = NO_OP) {
+    limiter.submit(upload_service._uploadEmoji, file, callback);
+  },
+  _uploadEmoji: function (file, callback = NO_OP) {
     var hidden_form_data = upload_service._getHiddenFormData();
-    var id = uuid.v4();
     var name = file.name.split('.')[0];
     var image_upload_request = superagent.post('/customize/emoji')
       .withCredentials()
@@ -37,7 +40,6 @@ var upload_service = {
       var response_error = upload_service._extractError(response.text);
       callback(response_error, response);
     });
-    return id;
   }
 };
 

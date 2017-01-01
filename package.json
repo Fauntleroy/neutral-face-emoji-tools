@@ -37,6 +37,7 @@
     "watchify": "^3.4.0"
   },
   "dependencies": {
+    "bottleneck": "^1.15.0",
     "classnames": "^2.1.5",
     "lodash": "^3.10.1",
     "react": "^0.14.0",
