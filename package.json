@@ -44,8 +44,7 @@
     "react-dom": "^0.14.0",
     "react-dropzone": "^2.1.0",
     "strip": "0.0.7",
-    "superagent": "^1.4.0",
-    "uuid": "^2.0.1"
+    "superagent": "^1.4.0"
   },
   "browserify": {
     "debug": true,

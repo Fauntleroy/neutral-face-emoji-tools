@@ -2,9 +2,10 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import cx from 'classnames';
 import findIndex from 'lodash/array/findIndex';
-import uuid from 'uuid';
 
 import { uploadEmoji } from '../services/upload.js';
+
+let nextId = 0;
 
 var Uploader = React.createClass({
   getInitialState: function () {
@@ -15,7 +16,7 @@ var Uploader = React.createClass({
   handleDrop: function (files) {
     const queue = files.map(file => {
       return {
-        id: uuid.v4(),
+        id: nextId++,
         file,
         success: null,
         error: null
