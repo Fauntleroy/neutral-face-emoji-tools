@@ -60,7 +60,7 @@ var Uploader = React.createClass({
           <img className="set__uploader__upload__preview" src={upload.file.preview} />
           <span className="set__uploader__upload__filename">{upload.file.name}</span>
           <span className="set__uploader__upload__status">
-            <i className="set__uploader__upload__status__icon set__uploader__upload__status__icon-uploading ts_icon ts_icon_spinner" />
+            <i className="set__uploader__upload__status__icon set__uploader__upload__status__icon-uploading ts_icon ts_icon_spin ts_icon_spinner" />
             <i className="set__uploader__upload__status__icon set__uploader__upload__status__icon-error ts_icon ts_icon_warning" />
             <i className="set__uploader__upload__status__icon set__uploader__upload__status__icon-success ts_icon ts_icon_check_circle_o" />
             {status}
