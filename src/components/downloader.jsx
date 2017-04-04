@@ -27,12 +27,11 @@ class Download extends React.Component {
       let trimmedName = /^:([a-z0-9\-\_]+):/i.exec(s.innerText);
       let trimmedUrl = /(https?:\/\/.*\.(png|jpg|gif))/.exec(s.cells[0].children[0].outerHTML);
 
-      emojis.push(
-        {
-          name: trimmedName[1] ? trimmedName[1] : s.innerText,
-          url: trimmedUrl[1] ? trimmedUrl[1] : s,
-          ext: '.'+last(trimmedUrl),
-        });
+      emojis.push({
+        name: trimmedName[1] ? trimmedName[1] : s.innerText,
+        url: trimmedUrl[1] ? trimmedUrl[1] : s,
+        ext: '.'+last(trimmedUrl),
+      });
     });
 
     this.setState({
