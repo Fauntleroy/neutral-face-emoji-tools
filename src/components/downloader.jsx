@@ -2,8 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import findIndex from 'lodash/array/findIndex';
 import forEach from 'lodash/collection/forEach';
-
-import { uploadEmoji } from '../services/upload.js';
+import axios from 'axios';
 
 class Download extends React.Component {
   constructor() {
@@ -37,17 +36,23 @@ class Download extends React.Component {
     const { emojis } = this.state;
 
     e.preventDefault();
-    console.log('downloading');
-    console.log('emojis in download', emojis);
     forEach(emojis, (e) => {
-      let element = document.createElement('a');
-      element.setAttribute('href', e.url);
-      element.setAttribute('download', e.name);
-
-      element.style.display = 'none';
-      document.body.appendChild(element);
-      element.click();
-      document.body.removeChild(element);
+      let x = new XMLHttpRequest();
+      x.open('GET', e.url);
+      x.responseType = 'blob';
+      x.onload = function() {
+          let blob = x.response;
+          let fr = new FileReader();
+          fr.onloadend = function() {
+            let base64 = fr.result;
+            let link = document.createElement("a");
+            link.setAttribute("href", base64);
+            link.setAttribute("download", e.name);
+            link.click();
+          };
+          fr.readAsDataURL(blob);
+      };
+      x.send();
     })
 
 

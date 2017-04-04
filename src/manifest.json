@@ -2,7 +2,11 @@
     "name": "Slack Emoji Tools",
     "description": "Tools that make life as a Slack emoji addict a little easier.",
     "version": "1.0.1",
-    "permissions": ["activeTab"],
+    "permissions": [
+        "activeTab",
+        "http://*/",
+        "https://*/"
+    ],
     "content_scripts": [{
         "matches": ["*://*.slack.com/*/emoji*"],
         "js": [
