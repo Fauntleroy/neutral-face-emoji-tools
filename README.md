@@ -4,6 +4,9 @@ Drag and drop all your emoji.
 
 ![Demo GIF](demo.gif)
 
+Now with one-click bulk emoji downloads too! Saves a zip file to your default folder.
+
+![Downloads!](download.jpg)
 -----
 
 ### Installation
