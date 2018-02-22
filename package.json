@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fauntleroy/slack-emoji-tools.git"
+    "url": "git+https://github.com/Fauntleroy/neutral-face-emoji-tools.git"
   },
   "keywords": [
     "slack",
@@ -22,9 +22,9 @@
   "author": "Timothy Kempf <tim@kemp59f.info> (http://kemp59f.info)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Fauntleroy/slack-emoji-tools/issues"
+    "url": "https://github.com/Fauntleroy/neutral-face-emoji-tools/issues"
   },
-  "homepage": "https://github.com/Fauntleroy/slack-emoji-tools#readme",
+  "homepage": "https://github.com/Fauntleroy/neutral-face-emoji-tools#readme",
   "devDependencies": {
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
