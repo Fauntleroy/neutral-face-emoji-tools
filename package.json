@@ -1,6 +1,6 @@
 {
   "name": "neutral-face-emoji-tools",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Tools that make life as a Slack emoji addict a little easier.",
   "main": "index.js",
   "scripts": {
@@ -37,13 +37,12 @@
     "watchify": "^3.4.0"
   },
   "dependencies": {
-    "classnames": "^2.1.5",
+    "element-ready": "^3.0.0",
     "lodash": "^3.10.1",
-    "react": "^0.14.0",
-    "react-dom": "^0.14.0",
-    "react-dropzone": "^2.1.0",
+    "simple-dropzone": "^0.5.3",
     "strip": "0.0.7",
     "superagent": "^1.4.0",
+    "superagent-throttle": "^0.2.5",
     "uuid": "^2.0.1"
   },
   "browserify": {

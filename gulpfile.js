@@ -9,7 +9,7 @@ var generateBrowserifyBundler = function(){
 	var browserify_config = assign( {}, watchify.args, {
 		debug: true
 	});
-	var bundler = browserify( './src/content.jsx', browserify_config );
+	var bundler = browserify( './src/content.js', browserify_config );
 	/* transforms are configured in package.json */
 	return bundler;
 };
