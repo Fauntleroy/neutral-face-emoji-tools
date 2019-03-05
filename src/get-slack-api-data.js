@@ -10,8 +10,8 @@ export default function getSlackApiData () {
       return;
     }
 
-    const apiTokenResult = /api_token\:\s\"(.*)\"/g.exec(script.innerText);
-    const versionUidResult = /version_uid\:\s\"(.*)\"/g.exec(script.innerText);
+    const apiTokenResult = /["]?api_token["]?\:\s*\"(.+?)\"/g.exec(script.innerText);
+    const versionUidResult = /["]?version_uid["]?\:\s*\"(.+?)\"/g.exec(script.innerText);
     
     if (apiTokenResult) {
       apiToken = apiTokenResult[1];
