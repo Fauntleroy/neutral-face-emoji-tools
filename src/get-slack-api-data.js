@@ -1,4 +1,5 @@
 export default function getSlackApiData () {
+  /** @type {NodeListOf<HTMLScriptElement>} */
   const scripts = document.querySelectorAll('script[type="text/javascript"]');
   let apiToken;
   let versionUid;
