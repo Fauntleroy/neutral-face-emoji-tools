@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/Fauntleroy/neutral-face-emoji-tools#readme",
   "devDependencies": {
+    "@types/chrome": "0.0.81",
     "babelify": "^6.3.0",
     "browserify": "^11.2.0",
     "gulp": "^3.9.0",
