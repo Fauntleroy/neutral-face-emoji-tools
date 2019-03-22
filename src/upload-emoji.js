@@ -5,7 +5,7 @@ import uuid from 'uuid';
 
 import getSlackApiData from './get-slack-api-data';
 
-const NO_OP = function () {};
+const NO_OP = function (_uploadError, _response) {};
 
 const superagentThrottle = new SuperagentThrottle({
   active: true,
