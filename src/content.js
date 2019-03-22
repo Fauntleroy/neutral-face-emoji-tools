@@ -1,7 +1,7 @@
 import elementReady from 'element-ready';
 import SimpleDropzone from 'simple-dropzone';
 
-import CSSLoaded from './styles/content.less';
+import './styles/content.less';
 
 import uploadEmoji from './upload-emoji';
 
