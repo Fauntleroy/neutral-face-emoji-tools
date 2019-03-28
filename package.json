@@ -26,30 +26,6 @@
   },
   "homepage": "https://github.com/Fauntleroy/neutral-face-emoji-tools#readme",
   "devDependencies": {
-    "babelify": "^6.3.0",
-    "browserify": "^11.2.0",
-    "gulp": "^3.9.0",
-    "gulp-util": "^3.0.6",
-    "lessify": "^1.0.1",
-    "mkdirp": "^0.5.1",
-    "vinyl-source-stream": "^1.1.0",
-    "watch": "^0.16.0",
-    "watchify": "^3.4.0"
-  },
-  "dependencies": {
-    "element-ready": "^3.0.0",
-    "lodash": "^3.10.1",
-    "simple-dropzone": "^0.5.3",
-    "strip": "0.0.7",
-    "superagent": "^1.4.0",
-    "superagent-throttle": "^0.2.5",
-    "uuid": "^2.0.1"
-  },
-  "browserify": {
-    "debug": true,
-    "transform": [
-      "babelify",
-      "lessify"
-    ]
+    "parcel-bundler": "^1.12.3"
   }
 }
