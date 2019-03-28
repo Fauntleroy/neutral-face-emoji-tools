@@ -29,11 +29,11 @@ function createUploadElement (upload) {
 
 elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
     const elementToInsertBefore = document.querySelector(ELEMENT_TO_INSERT_BEFORE_SELECTOR);
-    const containerDvi = document.createElement('div');
+    const containerDiv = document.createElement('div');
 
-    elementToInsertBefore.before(containerDvi);
+    elementToInsertBefore.before(containerDiv);
 
-    containerDvi.innerHTML = `
+    containerDiv.innerHTML = `
       <div class="neutral-face-emoji-tools">
         <h4 class="nfet__uploader__heading">
           <img class="nfet__uploader__heading__icon" src="${SET_ICON_URL}"></img>
