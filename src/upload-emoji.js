@@ -4,15 +4,13 @@ import SuperagentThrottle from 'superagent-throttle';
 
 import getSlackApiData from './get-slack-api-data';
 
-const NO_OP = function () {};
-
 const superagentThrottle = new SuperagentThrottle({
   active: true,
   concurrent: 5,
   rate: Infinity
 });
 
-export default function uploadEmoji (file, callback = NO_OP) {
+export default function uploadEmoji(file, callback) {
   const { apiToken, versionUid } = getSlackApiData();
   const timestamp = Date.now() / 1000;  
   const version = versionUid ? versionUid.substring(0, 8) : 'noversion';
