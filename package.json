@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "element-ready": "^3.1.0",
-    "lodash": "^4.17.11",
+    "lodash.get": "^4.4.2",
     "simple-dropzone": "^0.7.0",
     "superagent": "^5.0.0",
     "superagent-throttle": "^1.0.1"

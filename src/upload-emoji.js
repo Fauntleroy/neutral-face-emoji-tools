@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import get from 'lodash.get';
 import superagent from 'superagent';
 import SuperagentThrottle from 'superagent-throttle';
 
@@ -18,7 +18,7 @@ export default function uploadEmoji (file, callback = NO_OP) {
   const version = versionUid ? versionUid.substring(0, 8) : 'noversion';
   
   const name = file.name.split('.')[0];
-  const imageUploadRequest = superagent.post('/api/emoji.add')
+  superagent.post('/api/emoji.add')
     .withCredentials()
     .query(`_x_id=${version}-${timestamp}`)
     .field('name', name)
@@ -27,7 +27,7 @@ export default function uploadEmoji (file, callback = NO_OP) {
     .attach('image', file)
     .use(superagentThrottle.plugin())
     .end((error, response) => {
-      const uploadError = error || _.get(response.body, 'error');
+      const uploadError = error || get(response.body, 'error');
       callback(uploadError, response);
     });
 }
