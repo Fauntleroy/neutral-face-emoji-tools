@@ -1,6 +1,6 @@
 export default function getSlackApiData () {
   const scripts = document.querySelectorAll('script[type="text/javascript"]');
-  let apiToken;
+  let token;
   let versionUid;
 
   scripts.forEach((script) => {
@@ -14,7 +14,7 @@ export default function getSlackApiData () {
     const versionUidResult = /["]?version_uid["]?\:\s*\"(.+?)\"/g.exec(script.innerText);
 
     if (apiTokenResult) {
-      apiToken = apiTokenResult[1];
+      token = apiTokenResult[1];
     }
 
     if (versionUidResult) {
@@ -23,7 +23,7 @@ export default function getSlackApiData () {
   });
 
   return {
-    apiToken,
+    token,
     versionUid
   };
 }
