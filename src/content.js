@@ -1,6 +1,6 @@
+import elementReady from 'element-ready';
 import SimpleDropzone from 'simple-dropzone';
 import queue from 'queue';
-import { domReady } from './readies';
 import uploadEmoji from './upload-emoji';
 import './styles/content.less';
 
@@ -26,7 +26,7 @@ function createUploadElement (upload) {
   return element;
 }
 
-domReady.then(() => {
+elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
   const elementToInsertBefore = document.querySelector(ELEMENT_TO_INSERT_BEFORE_SELECTOR);
   const containerDiv = document.createElement('div');
 

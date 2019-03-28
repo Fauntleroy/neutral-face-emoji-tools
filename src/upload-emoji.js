@@ -1,13 +1,6 @@
 import get from 'lodash.get';
 import axios from 'axios';
 import getSlackApiData from './get-slack-api-data';
-
-const superagentThrottle = new SuperagentThrottle({
-  active: true,
-  concurrent: 5,
-  rate: Infinity
-});
-
 export default function uploadEmoji(file) {
   const { token, versionUid } = getSlackApiData();
   const timestamp = Date.now() / 1000;  
@@ -37,7 +30,7 @@ export default function uploadEmoji(file) {
   //   .attach('image', file)
   //   .use(superagentThrottle.plugin())
   //   .end((error, response) => {
-  //     const uploadError = error || get(response.body, 'error');
+  //     const uploadError = error || get(response.body, 'error');   <<<<<------------------
   //     callback(uploadError, response);
   //   });
 }

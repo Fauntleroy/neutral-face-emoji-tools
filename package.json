@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "element-ready": "^3.1.0",
     "lodash.get": "^4.4.2",
     "queue": "^6.0.1",
     "simple-dropzone": "^0.7.0"
