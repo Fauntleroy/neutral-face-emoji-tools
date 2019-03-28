@@ -1,7 +1,8 @@
 import elementReady from 'element-ready';
 import SimpleDropzone from 'simple-dropzone';
+import uuid from 'uuid';
 
-import CSSLoaded from './styles/content.less';
+import './styles/content.less';
 
 import uploadEmoji from './upload-emoji';
 
@@ -56,8 +57,15 @@ elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
       const uploadsElement = document.querySelector('.neutral-face-emoji-tools .nfet__uploader__uploads');
 
       files.forEach(file => {
-        let uploadElement;
-        const id = uploadEmoji(file, (error) => {
+        const id = uuid.v4();
+        const uploadElement = createUploadElement({
+          id,
+          file
+        });
+
+        uploadsElement.appendChild(uploadElement);
+
+        uploadEmoji(file, (error) => {
           if (error) {
             uploadElement.classList.add('nfet__uploader__upload--error');
             uploadElement.querySelector('.nfet__uploader__upload__status__text').innerText = error;
@@ -66,11 +74,6 @@ elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
             uploadElement.querySelector('.nfet__uploader__upload__status__text').innerText = 'added successfully';
           }
         });
-        uploadElement = createUploadElement({
-          id,
-          file
-        });
-        uploadsElement.appendChild(uploadElement);
       });
     });
 });
