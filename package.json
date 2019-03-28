@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "gulp dev",
-    "build": "gulp build"
+    "dev": "parcel src/content.js",
+    "build": "parcel build src/content.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,19 @@
   },
   "homepage": "https://github.com/Fauntleroy/neutral-face-emoji-tools#readme",
   "devDependencies": {
-    "parcel-bundler": "^1.12.3"
+    "@types/chrome": "0.0.81",
+    "less": "^3.9.0",
+    "parcel-bundler": "^1.12.3",
+    "parcel-plugin-static-files-copy": "^2.0.0"
+  },
+  "dependencies": {
+    "element-ready": "^3.1.0",
+    "lodash": "^4.17.11",
+    "simple-dropzone": "^0.7.0",
+    "superagent": "^5.0.0",
+    "superagent-throttle": "^1.0.1"
+  },
+  "staticFiles": {
+    "staticPath": "src/static"
   }
 }
