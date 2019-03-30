@@ -1,8 +1,8 @@
 import elementReady from 'element-ready';
-import SimpleDropzone from 'simple-dropzone';
+import { SimpleDropzone } from 'simple-dropzone';
 import queue from 'queue';
 import uploadEmoji from './upload-emoji';
-import './styles/content.less';
+import './styles/content.less'; // Just to get it into the parcel build
 
 const ELEMENT_TO_INSERT_BEFORE_SELECTOR = '.p-customize_emoji_wrapper';
 const SET_ICON_URL = chrome.runtime.getURL('images/icon_128.png');
@@ -26,7 +26,18 @@ function createUploadElement (upload) {
   return element;
 }
 
+function addStyling() {
+  const styleUrl = chrome.runtime.getURL('content.css');
+  const link = document.createElement('link');
+  link.setAttribute('rel', 'StyleSheet');
+  link.setAttribute('href', styleUrl);
+  link.setAttribute('type', 'text/css');
+  link.setAttribute('id', 'dingus');
+  document.body.append(link);
+}
+
 elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
+  addStyling();
   const elementToInsertBefore = document.querySelector(ELEMENT_TO_INSERT_BEFORE_SELECTOR);
   const containerDiv = document.createElement('div');
 
