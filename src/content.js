@@ -4,6 +4,7 @@ import queue from 'queue';
 import { SimpleDropzone } from 'simple-dropzone';
 import uploadEmoji from './upload-emoji';
 import './styles/content.less'; // Just to get it into the parcel build
+import getSlackErrorMessage from './slack-error-messages';
 
 const ELEMENT_TO_INSERT_BEFORE_SELECTOR = '.p-customize_emoji_wrapper';
 const SET_ICON_URL = chrome.runtime.getURL('images/icon_128.png');
@@ -72,7 +73,7 @@ function addStyling() {
   link.setAttribute('rel', 'StyleSheet');
   link.setAttribute('href', styleUrl);
   link.setAttribute('type', 'text/css');
-  link.setAttribute('id', 'dingus');
+  link.setAttribute('id', 'neutral-face-emoji-tools-styling');
   document.body.append(link);
 }
 
@@ -101,7 +102,8 @@ function successfulUpload(element) {
 }
 
 function failedUpload(element, error) {
+  const errorMessasge = getSlackErrorMessage(error);
   element.classList.add('nfet__uploader__upload--error');
-  element.querySelector('.nfet__uploader__upload__status__text').innerText = error;
+  element.querySelector('.nfet__uploader__upload__status__text').innerText = errorMessasge;
   console.log('Failed Upload', error);
 }
