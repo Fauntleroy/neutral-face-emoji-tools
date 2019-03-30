@@ -22,8 +22,8 @@ elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(element => {
 
   dropzone.on('drop', ({ files }) => {
     files.forEach(file => {
-      const uploadElement = createUploadElement(file);
-      uploadsElement.appendChild(uploadElement);
+      const uploadElement = new UI.UploadElement(file);
+      uploadsElement.appendChild(uploadElement.element);
 
       q.push(callback => {
         uploadEmoji(file)
