@@ -1,4 +1,3 @@
-import get from 'lodash.get';
 import axios from 'axios';
 import getSlackApiData from './get-slack-api-data';
 export default function uploadEmoji(file) {
@@ -20,17 +19,4 @@ export default function uploadEmoji(file) {
       'Content-Type': 'multipart/form-data'
     }
   });
-
-  // superagent.post('/api/emoji.add')
-  //   .withCredentials()
-  //   .query(`_x_id=${version}-${timestamp}`)
-  //   .field('name', name)
-  //   .field('mode', 'data')
-  //   .field('token', apiToken)
-  //   .attach('image', file)
-  //   .use(superagentThrottle.plugin())
-  //   .end((error, response) => {
-  //     const uploadError = error || get(response.body, 'error');   <<<<<------------------
-  //     callback(uploadError, response);
-  //   });
 }
