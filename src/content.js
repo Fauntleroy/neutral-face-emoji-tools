@@ -1,6 +1,7 @@
 import elementReady from 'element-ready';
-import { SimpleDropzone } from 'simple-dropzone';
+import get from 'lodash.get';
 import queue from 'queue';
+import { SimpleDropzone } from 'simple-dropzone';
 import uploadEmoji from './upload-emoji';
 import './styles/content.less'; // Just to get it into the parcel build
 
@@ -43,14 +44,18 @@ elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
 
       q.push(callback => {
         uploadEmoji(file)
-          .then(() => {
-            uploadElement.classList.add('nfet__uploader__upload--success');
-            uploadElement.querySelector('.nfet__uploader__upload__status__text').innerText = 'added successfully';
+          .then(response => {
+            const ok = get(response, ['data', 'ok']);
+            if (ok) {
+              successfulUpload(uploadElement);
+            }
+            else {
+              const error = get(response, ['data', 'error']);
+              failedUpload(uploadElement, error);
+            }
           })
           .catch(error => {
-            uploadElement.classList.add('nfet__uploader__upload--error');
-            uploadElement.querySelector('.nfet__uploader__upload__status__text').innerText = error;
-            console.error(error);
+            failedUpload(uploadElement, error);
           })
           .finally(() => {
             callback();
@@ -91,11 +96,12 @@ function createUploadElement (file) {
 }
 
 function successfulUpload(element) {
-
+  element.classList.add('nfet__uploader__upload--success');
+  element.querySelector('.nfet__uploader__upload__status__text').innerText = 'added successfully';
 }
 
 function failedUpload(element, error) {
   element.classList.add('nfet__uploader__upload--error');
   element.querySelector('.nfet__uploader__upload__status__text').innerText = error;
-  console.error(error);
+  console.log('Failed Upload', error);
 }
