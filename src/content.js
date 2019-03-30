@@ -5,34 +5,15 @@ import { SimpleDropzone } from 'simple-dropzone';
 import uploadEmoji from './upload-emoji';
 import './styles/content.less'; // Just to get it into the parcel build
 import getSlackErrorMessage from './slack-error-messages';
-import { injectStyling } from './ui';
+import * as UI from './ui';
 
 const ELEMENT_TO_INSERT_BEFORE_SELECTOR = '.p-customize_emoji_wrapper';
-const SET_ICON_URL = chrome.runtime.getURL('images/icon_128.png');
 
-elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
-  injectStyling();
-  const elementToInsertBefore = document.querySelector(ELEMENT_TO_INSERT_BEFORE_SELECTOR);
-  const containerDiv = document.createElement('div');
 
-  elementToInsertBefore.before(containerDiv);
+elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(element => {
+  UI.injectStyling();
+  UI.addContainerDiv(element);
 
-  containerDiv.innerHTML = `
-    <div class="neutral-face-emoji-tools">
-      <h4 class="nfet__uploader__heading">
-        <img class="nfet__uploader__heading__icon" src="${SET_ICON_URL}"></img>
-        <span class="nfet__uploader__heading__text">Bulk Emoji Uploader</span>
-      </h4>
-      <p class="nfet__uploader__subheading">Drag and drop images into the area below. Any images dropped there will be automatically uploaded using their filename as the emoji name.</p>
-      <p class="nfet__uploader__input-note input_note">Example: <span class="normal">"ditto.gif" will be added as "ditto"</span></p>
-      <div id="nfet-upload-zone" class="nfet__uploader__dropzone">
-        <div class="nfet__uploader__dropzone__content input_note">
-          <strong>Drop images here</strong> or click to open a file dialog
-        </div>
-        <input class="nfet__uploader__dropzone__input" id="nfet-upload-input" type="file" />
-      </div>
-      <ul class="nfet__uploader__uploads"></ul>
-    </div>`;
   const uploadInputElement = document.querySelector('#nfet-upload-input');
   const uploadZoneElement = document.querySelector('#nfet-upload-zone');
   const dropzone = new SimpleDropzone(uploadZoneElement, uploadInputElement);
