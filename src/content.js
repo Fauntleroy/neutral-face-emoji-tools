@@ -8,14 +8,14 @@ const ELEMENT_TO_INSERT_BEFORE_SELECTOR = '.p-customize_emoji_wrapper';
 const SET_ICON_URL = chrome.runtime.getURL('images/icon_128.png');
 
 let uploadElementId = 0;
-function createUploadElement (upload) {
-  const filePreview = window.URL.createObjectURL(upload.file);
+function createUploadElement (file) {
+  const filePreview = window.URL.createObjectURL(file);
   const element = document.createElement('li');
   element.id = `nfet__upload-${uploadElementId++}`;
   element.classList.add('nfet__uploader__upload');
   element.innerHTML = `
     <img class="nfet__uploader__upload__preview" src="${filePreview}" />
-    <span class="nfet__uploader__upload__filename">${upload.file.name}</span>
+    <span class="nfet__uploader__upload__filename">${file.name}</span>
     <span class="nfet__uploader__upload__status">
       <i class="nfet__uploader__upload__status__icon nfet__uploader__upload__status__icon-uploading ts_icon ts_icon_spinner"></i>
       <i class="nfet__uploader__upload__status__icon nfet__uploader__upload__status__icon-error ts_icon ts_icon_warning"></i>
@@ -62,17 +62,15 @@ elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
   const uploadInputElement = document.querySelector('#nfet-upload-input');
   const uploadZoneElement = document.querySelector('#nfet-upload-zone');
   const dropzone = new SimpleDropzone(uploadZoneElement, uploadInputElement);
+  const uploadsElement = document.querySelector('.neutral-face-emoji-tools .nfet__uploader__uploads');
+  const q = queue({ concurrency: 5 });
 
   dropzone.on('drop', ({ files }) => {
-    const uploadsElement = document.querySelector('.neutral-face-emoji-tools .nfet__uploader__uploads');
-
-    var q = queue({ concurrency: 5 });
-
     files.forEach(file => {
       const uploadElement = createUploadElement(file);
       uploadsElement.appendChild(uploadElement);
 
-      q.push(() => {
+      q.push(callback => {
         uploadEmoji(file)
           .then(() => {
             uploadElement.classList.add('nfet__uploader__upload--success');
@@ -81,8 +79,13 @@ elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
           .catch(error => {
             uploadElement.classList.add('nfet__uploader__upload--error');
             uploadElement.querySelector('.nfet__uploader__upload__status__text').innerText = error;
+            console.error(error);
+          })
+          .finally(() => {
+            callback();
           });
       });
     });
+    q.start();
   });
 });
