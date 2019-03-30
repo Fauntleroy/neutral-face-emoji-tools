@@ -1,7 +1,7 @@
 import axios from 'axios';
 import getSlackApiData from './get-slack-api-data';
-export default function uploadEmoji(file) {
-  const { token, versionUid } = getSlackApiData();
+export default async function uploadEmoji(file) {
+  const { token, versionUid } = await getSlackApiData;
   const timestamp = Date.now() / 1000;  
   const version = versionUid ? versionUid.substring(0, 8) : 'noversion';
   
