@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel src/content.js",
-    "build": "parcel build src/content.js --no-minify"
+    "build": "parcel build src/content.js --no-minify",
+    "build:shook": "parcel build src/content.js --no-minify --experimental-scope-hoisting",
+    "dev": "parcel src/content.js"
   },
   "repository": {
     "type": "git",
