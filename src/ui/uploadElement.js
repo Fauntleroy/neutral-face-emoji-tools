@@ -1,3 +1,5 @@
+import getSlackErrorMessage from '../slack-error-messages';
+
 let uploadElementId = 0;
 
 export default class UploadElement {
@@ -5,8 +7,26 @@ export default class UploadElement {
   constructor(file) {
     this._file = file;
     this.element = this._injectElement();
+    this.statusElement = this._getStatusElement();
   }
 
+  successfulUpload() {
+    this.element.classList.add('nfet__uploader__upload--success');
+    this.statusElement.innerText = 'Added successfully';
+  }
+  
+  failedUpload(error) {
+    const errorMessasge = getSlackErrorMessage(error);
+    this.element.classList.add('nfet__uploader__upload--error');
+    this.statusElement.innerText = errorMessasge;
+    console.log('Failed Upload', error);
+  }
+
+  // Private
+
+  /**
+   * @returns {HTMLLIElement}
+   */
   _injectElement() {
     const filePreview = window.URL.createObjectURL(this._file);
     const element = document.createElement('li');
@@ -23,5 +43,12 @@ export default class UploadElement {
       </span>`;
   
     return element;
+  }
+
+  /**
+   * @returns {HTMLSpanElement}
+   */
+  _getStatusElement() {
+    return this.element.querySelector('.nfet__uploader__upload__status__text');
   }
 }
