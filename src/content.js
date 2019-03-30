@@ -29,15 +29,15 @@ elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(element => {
           .then(response => {
             const ok = get(response, ['data', 'ok']);
             if (ok) {
-              successfulUpload(uploadElement);
+              uploadElement.successfulUpload();
             }
             else {
               const error = get(response, ['data', 'error']);
-              failedUpload(uploadElement, error);
+              uploadElement.failedUpload(error);
             }
           })
           .catch(error => {
-            failedUpload(uploadElement, error);
+            uploadElement.failedUpload(error);
           })
           .finally(() => {
             callback();
