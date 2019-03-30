@@ -5,12 +5,13 @@ import { SimpleDropzone } from 'simple-dropzone';
 import uploadEmoji from './upload-emoji';
 import './styles/content.less'; // Just to get it into the parcel build
 import getSlackErrorMessage from './slack-error-messages';
+import { injectStyling } from './ui';
 
 const ELEMENT_TO_INSERT_BEFORE_SELECTOR = '.p-customize_emoji_wrapper';
 const SET_ICON_URL = chrome.runtime.getURL('images/icon_128.png');
 
 elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
-  addStyling();
+  injectStyling();
   const elementToInsertBefore = document.querySelector(ELEMENT_TO_INSERT_BEFORE_SELECTOR);
   const containerDiv = document.createElement('div');
 
@@ -66,16 +67,6 @@ elementReady(ELEMENT_TO_INSERT_BEFORE_SELECTOR).then(() => {
     q.start();
   });
 });
-
-function addStyling() {
-  const styleUrl = chrome.runtime.getURL('content.css');
-  const link = document.createElement('link');
-  link.setAttribute('rel', 'StyleSheet');
-  link.setAttribute('href', styleUrl);
-  link.setAttribute('type', 'text/css');
-  link.setAttribute('id', 'neutral-face-emoji-tools-styling');
-  document.body.append(link);
-}
 
 let uploadElementId = 0;
 function createUploadElement (file) {
