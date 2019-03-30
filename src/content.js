@@ -98,7 +98,7 @@ function createUploadElement (file) {
 
 function successfulUpload(element) {
   element.classList.add('nfet__uploader__upload--success');
-  element.querySelector('.nfet__uploader__upload__status__text').innerText = 'added successfully';
+  element.querySelector('.nfet__uploader__upload__status__text').innerText = 'Added successfully';
 }
 
 function failedUpload(element, error) {
