@@ -1,18 +1,19 @@
 import _ from 'lodash';
-// import superagent from 'superagent';
-// import SuperagentThrottle from 'superagent-throttle';
 import axios from 'axios';
+import { ConcurrencyManager } from 'axios-concurrency';
 import uuid from 'uuid';
 
 import getSlackApiData from './get-slack-api-data';
 
-const NO_OP = function () {};
+const MAX_CONCURRENT_REQUESTS = 5;
 
-// const superagentThrottle = new SuperagentThrottle({
-//   active: true,
-//   concurrent: 5,
-//   rate: Infinity
-// });
+const slackApi = axios.create({
+  baseURL: 'https://creativemorningsww.slack.com/api'
+});
+
+ConcurrencyManager(slackApi, MAX_CONCURRENT_REQUESTS);
+
+const NO_OP = function () {};
 
 export default function uploadEmoji (file, callback = NO_OP) {
   const { apiToken, versionUid } = getSlackApiData();
@@ -27,9 +28,9 @@ export default function uploadEmoji (file, callback = NO_OP) {
   formData.append('token', apiToken);
   formData.append('image', file);
 
-  axios({
+  slackApi({
     method: 'post',
-    url: `https://creativemorningsww.slack.com/api/emoji.add`,
+    url: `/emoji.add`,
     params: {
       '_x_id': `${version}-${timestamp}`
     },
