@@ -22,20 +22,7 @@
   vertical-align: -25%;
 }
 
-.nfet__uploader__dropzone {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  margin: 0 0 10px 0;
-  width: 100%;
-  height: 150px;
-  border: @color-dropzone-border 3px dashed;
-  border-radius: 5px;
-  background: @color-dropzone-bg;
-  transition: background 450ms, border-color 450ms;
-}
+
 
 .nfet__uploader__dropzone--active,
 .nfet__uploader__dropzone:hover {
@@ -65,65 +52,4 @@
   margin: 0;
 }
 
-.nfet__uploader__upload {
-  display: flex;
-  align-items: center;
-  border-bottom: 1px solid @color-slack-border;
 
-  &:last-child {
-    border-bottom: none;
-  }
-}
-
-.nfet__uploader__upload__preview {
-  width: 1.25rem;
-  height: 1.25rem;
-  margin-right: 0.5em;
-}
-
-.nfet__uploader__upload__filename {
-  font-weight: bold;
-  margin-right: 1em;
-}
-
-.nfet__uploader__upload__status {
-  color: @color-slack-info;
-}
-
-.nfet__uploader__upload__status__icon {
-  display: none;
-  vertical-align: top;
-  margin-right: 0.25em;
-  font-size: 0.9rem !important;
-}
-
-.nfet__uploader__upload__status__icon-uploading {
-  display: inline-block;
-}
-
-.nfet__uploader__upload--success,
-.nfet__uploader__upload--error {
-  .nfet__uploader__upload__status__icon-uploading {
-    display: none;
-  }
-}
-
-.nfet__uploader__upload--success {
-  .nfet__uploader__upload__status {
-    color: @color-slack-success;
-  }
-
-  .nfet__uploader__upload__status__icon-success {
-    display: inline-block;
-  }
-}
-
-.nfet__uploader__upload--error {
-  .nfet__uploader__upload__status {
-    color: @color-slack-error;
-  }
-
-  .nfet__uploader__upload__status__icon-error {
-    display: inline-block;
-  }
-}
