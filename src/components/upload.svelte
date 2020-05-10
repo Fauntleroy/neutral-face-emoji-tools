@@ -11,7 +11,7 @@
   .upload {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid --color-slack-border;
+    border-bottom: 1px solid var(--color-slack-border);
   }
 
   .upload:last-child {
@@ -30,55 +30,52 @@
   }
 
   .status {
-    color: --color-slack-info;
+    color: var(--color-slack-info);
+    font-family: Consolas, monospace;
   }
 
-  .status__icon {
+  .status .icon {
     display: none;
     vertical-align: top;
-    margin-right: 0.25em;
     font-size: 0.9rem !important;
   }
 
-  .status__icon-uploading {
+  .upload.uploading .status .icon.uploading {
     display: inline-block;
   }
 
-  /* .upload--success,
-  .upload--error {
-    .status__icon-uploading {
-      display: none;
-    }
+  .upload.error .status .icon.error {
+    display: inline-block;
   }
 
-  .upload--success {
-    .status {
-      color: --color-slack-success;
-    }
-
-    .status__icon-success {
-      display: inline-block;
-    }
+  .upload.success .status .icon.success {
+    display: inline-block;
   }
 
-  .upload--error {
-    .status {
-      color: --color-slack-error;
-    }
+  .upload.uploading .status {
+    color: var(--color-slack-info);
+  }
 
-    .status__icon-error {
-      display: inline-block;
-    }
-  } */
+  .upload.error .status {
+    color: var(--color-slack-error);
+  }
+
+  .upload.success .status {
+    color: var(--color-slack-success);
+  }
 </style>
 
-<li class="upload" id={upload.id}>
+<li
+  class="upload"
+  class:uploading={status.type === 'uploading'}
+  class:error={status.type === 'error'}
+  class:success={status.type === 'success'}>
   <img class="preview" src={filePreview} alt="" />
   <span class="filename">{upload.file.name}</span>
   <span class="status">
-    <i class="status__icon status__icon-uploading ts_icon ts_icon_spinner"></i>
-    <i class="status__icon status__icon-error ts_icon ts_icon_warning"></i>
-    <i class="status__icon status__icon-success ts_icon ts_icon_check_circle_o"></i>
-    <span class="status__text">{status.message}</span>
+    <i class="icon uploading ts_icon ts_icon_spinner"></i>
+    <i class="icon error ts_icon ts_icon_warning"></i>
+    <i class="icon success ts_icon ts_icon_check_circle_o"></i>
+    <span class="text">{status.message}</span>
   </span>
 </li>
