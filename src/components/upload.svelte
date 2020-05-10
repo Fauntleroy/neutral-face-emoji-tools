@@ -11,6 +11,7 @@
   .upload {
     display: flex;
     align-items: center;
+    padding: 2px 0 1px 0;
     border-bottom: 1px solid var(--color-slack-border);
   }
 
@@ -30,26 +31,32 @@
   }
 
   .status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: var(--color-slack-info);
     font-family: Consolas, monospace;
   }
 
   .status .icon {
     display: none;
-    vertical-align: top;
-    font-size: 0.9rem !important;
+    margin-right: 0.25em;
+  }
+
+  .status .icon:before {
+    display: block;
   }
 
   .upload.uploading .status .icon.uploading {
-    display: inline-block;
+    display: block;
   }
 
   .upload.error .status .icon.error {
-    display: inline-block;
+    display: block;
   }
 
   .upload.success .status .icon.success {
-    display: inline-block;
+    display: block;
   }
 
   .upload.uploading .status {
