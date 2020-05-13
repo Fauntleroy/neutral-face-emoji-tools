@@ -8,7 +8,7 @@ import getSlackApiData from './get-slack-api-data';
 const MAX_CONCURRENT_REQUESTS = 5;
 
 const slackApi = axios.create({
-  baseURL: 'https://creativemorningsww.slack.com/api'
+  baseURL: `${window.location.origin}/api`
 });
 
 ConcurrencyManager(slackApi, MAX_CONCURRENT_REQUESTS);
@@ -43,7 +43,6 @@ export default function uploadEmoji (file, callback = NO_OP) {
     callback(error, null);
   }).then((response) => {
     const error = _.get(response, 'data.error');
-    console.log('response', response)
     callback(error, response);
   });
 

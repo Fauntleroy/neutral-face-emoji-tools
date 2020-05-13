@@ -3,8 +3,6 @@
   export let status;
 
   const filePreview = window.URL.createObjectURL(upload.file);
-
-  console.log('upload', upload);
 </script>
 
 <style>
