@@ -10,7 +10,7 @@ Drag and drop all your emoji.
 
 This extension is available for:
 - Google Chrome: https://chrome.google.com/webstore/detail/slack-emoji-tools/anchoacphlfbdomdlomnbbfhcmcdmjej
-- Mozilla Firefox
+- Mozilla Firefox: https://addons.mozilla.org/en-US/firefox/addon/neutral-face-emoji-tools/
 
 -----
 
