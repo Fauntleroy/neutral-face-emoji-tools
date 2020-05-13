@@ -31,3 +31,6 @@ dist
 
 # Do not include zip
 *.zip
+
+# OSX
+.DS_Store
