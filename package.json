@@ -1,6 +1,6 @@
 {
   "name": "neutral-face-emoji-tools",
-  "version": "3.0.1",
+  "version": "3.2.0",
   "description": "Tools that make life as a Slack emoji addict a little easier.",
   "main": "index.js",
   "scripts": {

@@ -8,13 +8,15 @@ Drag and drop all your emoji.
 
 ### Installation
 
-This extension is installed through the Chrome Web Store: https://chrome.google.com/webstore/detail/slack-emoji-tools/anchoacphlfbdomdlomnbbfhcmcdmjej
+This extension is available for:
+- Google Chrome: https://chrome.google.com/webstore/detail/slack-emoji-tools/anchoacphlfbdomdlomnbbfhcmcdmjej
+- Mozilla Firefox
 
 -----
 
 ### Usage
 
-To use this extension, simply navigate to the /customize/emoji page of your Slack. There should be a new section called "Bulk Emoji Uploader" under the "💁 Emoji" tab. Once there, just drag and drop the images you want into the drop zone.
+To use this extension, simply navigate to the /customize/emoji page of your Slack organization. There should be a new section called "Bulk Emoji Uploader" under the "💁 Emoji" tab. Once there, just drag and drop the images you want into the drop zone.
 
 **Note: Make sure your files are named appropriately before uploading them!**
 
