@@ -46,12 +46,5 @@
     "file-selector": "^0.1.12",
     "lodash": "^4.17.15",
     "uuid": "^2.0.1"
-  },
-  "browserify": {
-    "debug": true,
-    "transform": [
-      "babelify",
-      "lessify"
-    ]
   }
 }
