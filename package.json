@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "rollup -c -w",
-    "build": "rollup -c"
+    "build": "rollup -c && cp src/manifest.json dist/manifest.json"
   },
   "repository": {
     "type": "git",
