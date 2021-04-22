@@ -5,7 +5,7 @@ import uuid from 'uuid';
 
 import getSlackApiData from './get-slack-api-data';
 
-const MAX_CONCURRENT_REQUESTS = 5;
+const MAX_CONCURRENT_REQUESTS = 1;
 
 const slackApi = axios.create({
   baseURL: `${window.location.origin}/api`
