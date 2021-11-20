@@ -1,50 +1,80 @@
 <script>
   import Upload from './upload.svelte';
   import FileDropzone from './file-dropzone.svelte';
-
   import uploadEmoji from '../upload-emoji.js';
-
   const SET_ICON_URL = chrome.runtime.getURL('images/icon_128.png');
 
   let uploads = [];
   let uploadsStatusById = {};
+  let retryQueue = [];
 
-  function uploadFiles (files) {
-    files.forEach(file => {
+  function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
+
+  async function uploadFiles(files) {
+    for (const file of files) {
+      while (retryQueue.length > 0) {
+        const { id, file } = retryQueue.pop();
+        uploadEmoji(file, (error) => {
+          handleResponse(file, error, id);
+        });
+        await sleep(1000);
+      }
       const id = uploadEmoji(file, (error) => {
-        if (error) {
-          uploadsStatusById = {
-            ...uploadsStatusById,
-            [id]: {
-              type: 'error',
-              message: error.message || error
-            }
-          };
-        } else {
-          uploadsStatusById = {
-            ...uploadsStatusById,
-            [id]: {
-              type: 'success',
-              message: 'Successfully Uploaded.'
-            }
-          };
-        }
+        handleResponse(file, error, id);
       });
       uploadsStatusById = {
         ...uploadsStatusById,
         [id]: {
-          type: 'uploading',
-          message: 'Uploading...'
-        }
+          type: "uploading",
+          message: "Uploading...",
+        },
       };
-      uploads = [...uploads, {
-        file,
-        id
-      }];
-    });
+      uploads = [
+        ...uploads,
+        {
+          file,
+          id,
+        },
+      ];
+      //Slows down processing of file list so it doesn't get too far ahead of the callbacks
+      await sleep(500);
+    }
   }
 
-  function handleFilesAdded (event) {
+  async function handleResponse(file, error, id) {
+    if (error) {
+      if (error && error.message && error.message.includes("429")) {
+        retryQueue.push({ id, file });
+        uploadsStatusById = {
+          ...uploadsStatusById,
+          [id]: {
+            type: "uploading",
+            message: "Rate limit detected. Retrying...",
+          },
+        };
+      } else {
+        uploadsStatusById = {
+          ...uploadsStatusById,
+          [id]: {
+            type: "error",
+            message: error.message || error,
+          },
+        };
+      }
+    } else {
+      uploadsStatusById = {
+        ...uploadsStatusById,
+        [id]: {
+          type: "success",
+          message: "Successfully Uploaded.",
+        },
+      };
+    }
+  }
+
+  function handleFilesAdded(event) {
     const files = event.detail;
 
     uploadFiles(files);
@@ -59,19 +89,16 @@
     padding: 25px;
     background: white;
   }
-
   .icon.heading {
     margin: 0 5px 0 0;
     height: 1.25em;
     vertical-align: -25%;
   }
-
   .input-note {
     font-size: .9rem;
     line-height: 1.25rem;
     color: var(--color-text-gray);
   }
-
   .uploads {
     list-style-type: none;
     margin: 0;
