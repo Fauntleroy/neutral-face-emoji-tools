@@ -14,13 +14,7 @@
 
   async function uploadFiles(files) {
     for (const file of files) {
-      while (retryQueue.length > 0) {
-        const { id, file } = retryQueue.pop();
-        uploadEmoji(file, (error) => {
-          handleResponse(file, error, id);
-        });
-        await sleep(1000);
-      }
+      await processRetryQueue();
       const id = uploadEmoji(file, (error) => {
         handleResponse(file, error, id);
       });
@@ -40,6 +34,23 @@
       ];
       //Slows down processing of file list so it doesn't get too far ahead of the callbacks
       await sleep(500);
+    }
+    
+    //Add more waits to this last round of processing to be sure we don't miss the last files
+    await sleep(5000);
+    while (retryQueue.length > 0) {
+      processRetryQueue();
+      await sleep(5000);
+    }
+  }
+
+  async function processRetryQueue() {
+    while (retryQueue.length > 0) {
+      const { id, file } = retryQueue.pop();
+      uploadEmoji(file, (error) => {
+        handleResponse(file, error, id);
+      });
+      await sleep(1000);
     }
   }
 
