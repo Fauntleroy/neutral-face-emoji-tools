@@ -39,11 +39,11 @@ export default function uploadEmoji (file, callback = NO_OP) {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded'
     }
-  }).catch((error) => {
-    callback(error, null);
   }).then((response) => {
     const error = _.get(response, 'data.error');
     callback(error, response);
+  }).catch((error) => {
+    callback(error, null);
   });
 
   return id;
