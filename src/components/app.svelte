@@ -1,4 +1,5 @@
 <script>
+  import manifest from '../manifest.json';
   import Upload from './upload.svelte';
   import FileDropzone from './file-dropzone.svelte';
   import uploadEmoji from '../upload-emoji.js';
@@ -99,6 +100,7 @@
     margin: 0 0 25px 0;
     padding: 25px;
     background: white;
+    position: relative;
   }
   .icon.heading {
     margin: 0 5px 0 0;
@@ -115,6 +117,15 @@
     margin: 0;
     font-size: 0.9rem;
   }
+  .version-number {
+    font-style: normal;
+    font-size: 0.65rem;
+    line-height: 1;
+    position: absolute;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    opacity: 0.5;
+  }
 </style>
 
 <div class="neutral-face-emoji-tools">
@@ -130,4 +141,5 @@
       <Upload upload={upload} status={uploadsStatusById[upload.id]} />
     {/each}
   </ul>
+  <var class="version-number">{manifest.version}</var>
 </div>
