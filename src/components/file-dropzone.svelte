@@ -80,5 +80,8 @@
   <input
     class="file-input"
     type="file"
+    webkitdirectory
+    directory
+    multiple
     on:change={handleFileChange} />
 </div>
