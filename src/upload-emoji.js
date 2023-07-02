@@ -20,7 +20,7 @@ export default function uploadEmoji (file, callback = NO_OP) {
   const timestamp = Date.now() / 1000;  
   const version = versionUid ? versionUid.substring(0, 8) : 'noversion';
   const id = uuid.v4();
-  const name = file.name.split('.')[0];
+  const name = file.name.split('.')[0].toLowerCase();
 
   const formData = new FormData();
   formData.append('name', name);
